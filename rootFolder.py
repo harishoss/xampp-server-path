@@ -61,6 +61,11 @@ def save_to_file(fileContent):
         subprocess.call(['sudo', '/opt/lampp/lampp', 'restart'])
 
 def process_argv():
+    '''
+    Processes argv list.
+    returns path if necesary arguments 
+    passsed.
+    '''
     if(len(argv) == 1):
         exit("No Necessary Arguments found. Provide a 'path/to/replace' or '--current' as arguments.")
     if argv[1] == '--current':
