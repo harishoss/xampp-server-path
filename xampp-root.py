@@ -1,5 +1,5 @@
-#! usr/bin/env python3
-from os import path,chmod
+#! /usr/bin/python3
+import os
 from sys import argv
 from re import match
 from stat import S_IWUSR, S_IREAD
@@ -13,7 +13,7 @@ def get_httpd_content(file_path):
     takes file path as input and returns 
     file content in list format.
     '''
-    if not path.isfile(file_path):
+    if not os.path.isfile(file_path):
         exit("File is not found.")
     httpd_file = open(file_path, 'r')
     return httpd_file.readlines()
@@ -69,9 +69,9 @@ def process_argv():
     if(len(argv) == 1):
         exit("No Necessary Arguments found. Provide a 'path/to/replace' or '--current' as arguments.")
     if argv[1] == '--current':
-        return path.dirname(path.realpath(__file__))
+        return os.getcwd()
     else:
-        if path.isdir(argv[1]):
+        if os.path.isdir(argv[1]):
             return argv[1]
         else:
             exit("Given Path is not a directory or can't be accesable")
