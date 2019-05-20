@@ -57,6 +57,9 @@ def save_to_file(fileContent):
     '''
     with open(HTTPD_CONF, 'w') as file:
         file.writelines(fileContent)
+        print('successfully replaced the path in httpd.conf')
+        subprocess.call(['sudo', '/opt/lampp/lampp', 'restart'])
+
 def process_argv():
     if(len(argv) == 1):
         exit("No Necessary Arguments found. Provide a 'path/to/replace' or '--current' as arguments.")
